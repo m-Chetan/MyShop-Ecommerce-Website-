@@ -12,12 +12,17 @@ dotenv.config()
 
 const app=express()
 app.use(express.json()) 
+
+//For connecting server to database
 connectDB()
 
+//Application middlware app.use()
 //routes
 app.use('/api/products',productRoutes)
 app.use('/api/users',userRoutes)
 app.use('/api/orders',orderRoutes)
+
+//GET 
 app.get('/api/config/paypal', (req,res) => {
     res.send(process.env.PAYPAL_CLIENT_ID)
 })
